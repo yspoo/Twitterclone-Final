@@ -1,4 +1,4 @@
-user
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/">Songster</a>
@@ -32,8 +32,7 @@ user
 
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        @yising
-      </button>
+        @   <%= current_user.username %>  </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li class="dropdown-item" href="/profile">Profile</li>
         <li class="dropdown-item" href="#">Help Center</li>
