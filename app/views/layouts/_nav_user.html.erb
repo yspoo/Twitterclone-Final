@@ -1,0 +1,53 @@
+user
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Songster</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Notifications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Messages</a>
+      </li>
+    </ul>
+
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Tweet</a>
+      </li>
+    </ul>
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        @yising
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li class="dropdown-item" href="/profile">Profile</li>
+        <li class="dropdown-item" href="#">Help Center</li>
+        <li class="dropdown-item"><%= link_to 'Settings', edit_user_registration_path %></li>
+        <li class="dropdown-item" href="#">Settings</li>
+        <li class="dropdown-divider"></li>
+        <li class="dropdown-item"><%= link_to 'Log out', destroy_user_session_path, :method => :delete, :data => { :confirm => "Are you sure?" } %></li>
+        <li class="dropdown-item" href="#">Log out</li>
+      </ul>
+    </div>
+    <!-- changed the original <div> tags to <ul> and <li> tags where appropriate -->
+    <!-- rmb when using "link_to" helper method, the default method(HTTP verb) is ":get". so we have to specify other HTTP verbs if we need to create/update/destroy stuff. -->
+    <!-- can also use <%# link_to('Log out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }) %> -->
+    <!-- can also use <%# link_to 'Log out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+    <!-- can choose to use HTML links or ERB links, whichever you prefer. -->
+  </div>
+</nav>

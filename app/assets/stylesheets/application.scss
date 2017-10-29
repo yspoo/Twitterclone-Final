@@ -1,0 +1,39 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+// Navbar styling
+#notice_wrapper, #alert_wrapper {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: rgba(135, 216, 211, 0.85);
+  // to target the words, we use the span selector.
+  .alert, .notice {
+    padding: 1.0rem 0;
+    text-align: center;
+    margin: 0;
+    // remove the margin of the words
+    font-size: 1.25rem;
+    // make the words smaller a bit
+    font-weight: 700;
+    // make the words bold
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+}

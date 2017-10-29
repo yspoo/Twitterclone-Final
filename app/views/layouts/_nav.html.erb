@@ -1,0 +1,15 @@
+<!-- render seperate nav bars depending on if the user is signed in or not. -->
+<!-- Navigation bar is split into erb partials, one for users, one for guests. -->
+
+<% if !user_signed_in? %>
+<!-- user_signed_in is a built in method provided by Devise that returns if a user is signed in or not, the bang sign is Ruby variation of a negation: so it is saying if user is not signed in. -->
+  <%= render '/layouts/nav_guest' %>
+<% else %>
+  <%= render '/layouts/nav_user' %>
+<% end %>
+<!-- rmb that the path has to be:
+  '/layouts/nav_user'
+  '/layouts/nav_guest'
+if just write '/nav_guest' or '/nav_user', the path is incomplete. there has to be a directory stated in front of the file even if the files belong to the same directory. rmb to add a forward slash '/' because we are using relative path.
+
+also rmb to use "<%=" with an equal sign "=" so that we are rendering the view!
