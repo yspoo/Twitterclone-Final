@@ -34,7 +34,7 @@
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         @   <%= current_user.username %>  </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li class="dropdown-item" href="/profile">Profile</li>
+        <li class="dropdown-item"><a href="/user/<%= current_user.username %>">Profile</a></li>
         <li class="dropdown-item" href="#">Help Center</li>
         <li class="dropdown-item"><%= link_to 'Settings', edit_user_registration_path %></li>
         <li class="dropdown-item" href="#">Settings</li>

@@ -8,11 +8,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   </head>
-
+<!-- Rmb to use min.js and not slim.min.js for JQuery. Rmb to change the JQuery from the Bootstrap 4 starting template!!! -->
   <body>
     <%= render '/layouts/nav' %>
 
@@ -32,17 +32,17 @@
 
     <%= yield %>
 
-
+<!-- JQuery code which doesn't work! -->
     <script>
-      // JQuery code which doesn't work!
       $(document).ready(function() {
+        console.log('test')
         setTimeout(function() {
-          $("#notice_wrapper", "#alert_wrapper").fadeOut("slow", function() {
+          $("#notice_wrapper, #alert_wrapper").fadeOut("slow", function() {
             $(this).remove();
           });
         }, 2500);
       });
-      // 2500 is in milliseconds which is equal to 2.5seconds
     </script>
+<!-- 2500 is in milliseconds which is equal to 2.5seconds -->
   </body>
 </html>
