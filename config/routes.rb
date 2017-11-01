@@ -21,8 +21,8 @@ destroy_user_session DELETE /users/sign_out(.:format)      user/sessions#destroy
 
   get '/home' => 'pages#home'
 
-  get '/user/:id' => 'pages#profile', :as => :profile
-  get '/explore' => 'pages#explore'
+  get '/user/:username123' => 'pages#profile', :as => :profile
+  get '/users' => 'pages#users'
 =begin
 Because we have specified our root path, we are able to use relative paths, e.g "/profile" will mean "localhost:3000/profile"
 
