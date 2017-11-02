@@ -3,9 +3,9 @@
 
 <% if !user_signed_in? %>
 <!-- user_signed_in is a built in method provided by Devise that returns if a user is signed in or not, the bang sign is Ruby variation of a negation: so it is saying if user is not signed in. -->
-  <%= render '/layouts/nav_guest' %>
+  <%= render 'partials/nav_guest' %>
 <% else %>
-  <%= render '/layouts/nav_user' %>
+  <%= render 'partials/nav_user' %>
 <% end %>
 <!-- rmb that the path has to be:
   '/layouts/nav_user'

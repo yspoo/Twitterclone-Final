@@ -15,12 +15,9 @@ new_user_session GET    /users/sign_in(.:format)       user/sessions#new
 destroy_user_session DELETE /users/sign_out(.:format)      user/sessions#destroy
 
 =end
-
+  resources :tweets
   root 'pages#index'
-
-
   get '/home' => 'pages#home'
-
   get '/user/:username123' => 'pages#profile', :as => :profile
   get '/users' => 'pages#users'
 =begin
