@@ -6,11 +6,16 @@
       <div class="card">
         <img class="card-img-top" src="..." alt="Card image cap">
         <div class="card-body">
-          <h4 class="card-title">Profile</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="container">
+            <h4 class="card-title"><%= current_user.username %></h4>
+            <h6 class="card-title">Tweets </h6>
+            <h6 class="card-title">Following <%= current_user.following.count %></h6>
+            <h6 class="card-title">Followers <%= current_user.followers.count %></h6>
+          </div>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
+
       <div class="card">
         <img class="card-img-top" src="..." alt="Card image cap">
         <div class="card-body">

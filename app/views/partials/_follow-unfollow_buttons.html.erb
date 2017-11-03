@@ -1,0 +1,19 @@
+<% if current_user.id != user.id %> <!-- to check if current user is the same person(denoted by "user") as who the current user wants to follow. this is to prevent current user from following himself. So, the follow button will not be displayed in current user's profile page. -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <center>
+            <% if !current_user.following?(user) %> <!-- to check if current user is already following the person(denoted by "user", which is actually the next user in the list) that he wants to follow. If the return value is true, it means current_user is NOT following that particular user. -->
+              <%= form_for current_user.active_relationships.build do |f| %> <!-- Adding something to current user's active relationship. It will have another user ID appended onto the active_relationship table when current user clicks on "follow" button. -->
+                <%= color_field_tag :followed_id, user.id %> <!-- color_field_tag(name, value = nil, options = {}) "name" is the name of the column, "value" is the input value passed in. -->
+                <%= f.submit "Follow", class="btn btn-primary" %>
+              <% end %>
+            <% else %>
+              <% form_for current_user.active_relationships.find_by(followed_id: user.id), html: { method: :delete } do |f| %>
+                <%= f.submit "Unfollow", class="btn btn-primary" %>
+            <% end %>
+        </center>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -15,6 +15,13 @@ new_user_session GET    /users/sign_in(.:format)       user/sessions#new
 destroy_user_session DELETE /users/sign_out(.:format)      user/sessions#destroy
 
 =end
+resources :users do
+  member do
+    get :following, :followers  # Now we can get from a SINGLE <user>
+                                #     ALL the users that <User> follows for :following
+                                #     ALL the users that follows <User> for :followers
+  end
+end
   resources :tweets
   root 'pages#index'
   get '/home' => 'pages#home'
