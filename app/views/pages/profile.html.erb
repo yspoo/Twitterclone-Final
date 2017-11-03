@@ -21,10 +21,8 @@
     </div>
 
     <div class="col-6">
-      <!-- Form to tweet
-    ROR doesn't know what to do with form data once it's passed back so if you rmb correctly we have to put logic inside of the corresponding controllers whenever we want to operate on a data and a view. -->
-      <%= render 'partials/tweet_form' %>
-      <% @tweets.each do |tweet| %>
+      <%= render 'partials/tweet_form' %> <!-- Tweet form -->
+      <% @tweets.latest.each do |tweet| %>
       <div class="card">
         <img class="card-img-top" src="..." alt="Card image cap">
         <div class="card-body">
