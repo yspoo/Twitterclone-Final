@@ -29,6 +29,17 @@ However, if we prefer to have our own naming, we can write it like:
   <user>.followers to find all the people that follows <user>.
 =end
 
+# Helper methods
+  # Follow another user
+  def follow(other)
+    active_relationships.create(followed_id: other.id)
+  end
+
+  # Unfollow another user
+  def unfollow(other)
+    active_relationships.find_by(followed_id: other.id).destroy
+  end
+
  scope :latest, -> {order(created_at: :desc) }
 
  # Validations
