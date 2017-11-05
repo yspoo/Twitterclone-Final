@@ -8,8 +8,7 @@ class Tweet < ApplicationRecord
   # scope :latest, -> { order("created_at DESC") } will also work.
   # now I can access the method "latest" on my Tweet model in the controller.
 
+  # Validations
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 } # tweets are capped at 140 chars.
-
-
 end
