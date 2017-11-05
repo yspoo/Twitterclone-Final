@@ -21,8 +21,10 @@
     </div>
 
     <div class="col-6">
+
       <%= render 'partials/tweet_form' %> <!-- Tweet form -->
       <% @tweets.latest.each do |tweet| %>
+
       <div class="card">
         <img class="card-img-top" src="..." alt="Card image cap">
         <div class="card-body">
@@ -39,7 +41,9 @@
         <img class="card-img-top" src="..." alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">Who to follow</h4>
-          <%= render 'partials/follow-unfollow_buttons', :user => User.find_by_username(params[:id]) %> <!-- we are assigning the username of the current user to :user -->
+
+          <%= render 'partials/follow-unfollow_buttons', :user => User.find(@username) %> <!-- we are assigning the username of the current user to :user -->
+
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>

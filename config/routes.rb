@@ -2,27 +2,34 @@ Rails.application.routes.draw do
 
   devise_for :users#, :controllers => {:sessions => "user/sessions", :registrations => "user/registrations"}
 =begin
-
 -  :controllers => {:sessions => "user/sessions", :registrations => "user/registrations"}
 will change all the actions belonging to the sessions and registrations controllers from the devise controller to belonging to the user controller. The prefix and URI pattern remains the same.
 
-new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
-    user_session POST   /users/sign_in(.:format)       devise/sessions#create
-destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy
+BEFORE
+new_user_session      GET    /users/sign_in(.:format)       devise/sessions#new
+user_session          POST   /users/sign_in(.:format)       devise/sessions#create
+destroy_user_session  DELETE /users/sign_out(.:format)      devise/sessions#destroy
 
-new_user_session GET    /users/sign_in(.:format)       user/sessions#new
-    user_session POST   /users/sign_in(.:format)       user/sessions#create
-destroy_user_session DELETE /users/sign_out(.:format)      user/sessions#destroy
+AFTER
+new_user_session      GET    /users/sign_in(.:format)       user/sessions#new
+user_session          POST   /users/sign_in(.:format)       user/sessions#create
+destroy_user_session  DELETE /users/sign_out(.:format)      user/sessions#destroy
 
 =end
-resources :users do
-  member do
-    get :following, :followers  # Now we can get from a SINGLE <user>
-                                #     ALL the users that <User> follows for :following
-                                #     ALL the users that follows <User> for :followers
+  resources :users do             # Make sure this is after devise routes so that the devise routes go through first.
+    member do
+      get :following, :followers  # Now we can get from a SINGLE <user>
+                                  #     ALL the users that <User> follows from :following
+                                  #     ALL the users that follows <User> from :followers
+=begin
+This 2 routes will be generated:
+following_user GET    /users/:id/following(.:format)    users#following
+followers_user GET    /users/:id/followers(.:format)    users#followers
+=end
+    end
   end
-end
   resources :tweets
+  resources :relationships
   root 'pages#index'
   get '/home' => 'pages#home'
   get '/user/:username123' => 'pages#profile', :as => :profile
