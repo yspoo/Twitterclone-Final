@@ -55,5 +55,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Enabled but why still can't get my images from within my application?
-  config.assets.enabled = true
+  # config.assets.enabled = true
 end
