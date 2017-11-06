@@ -1,0 +1,31 @@
+<h1 class="jumbotron">Users</h1>
+
+<div class="container">
+
+  <div class="card my-2 p-3">
+    <ul>
+      <% @users.each do |user| %>
+        <li>
+          <%= link_to "#{user.username}", user_path(user) %>
+        </li>
+
+        <!-- Hide whole thing if User is self -->
+        <!-- unless block only executes if the condition evaluates to FALSE -->
+        <% unless current_user == user %> <!-- unless current_user is NOT user, do this: -->
+          <!-- Follow -->
+          <% unless current_user.following?(user) %> <!-- unless current_user is NOT following user, do this: -->
+            <%= form_for(current_user.active_relationships.build) do |f| %>
+              <div><%= color_field_tag :followed_id, user.id %></div>
+              <%= f.submit "Follow", class: "btn btn-primary my-button" %>
+            <% end %>
+          <% end %>
+          <!-- Unfollow only if current_user is already following user-->
+          <%= link_to 'Unfollow', relationship_path(user), method: :delete, class: "btn btn-danger" if current_user.following?(user)%>
+        <% end %>
+
+        <hr>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

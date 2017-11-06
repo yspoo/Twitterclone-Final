@@ -1,31 +1,40 @@
-<div class="container">
-  <h2>Log in</h2>
+<div class="container-fluid guest-login d-flex">
+  <div class="row justify-content-center"> <!-- justify-content: It defines the alignment along the main axis. It helps distribute extra free space leftover when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size. -->
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
+    <!-- Column for description -->
+    <div class="col-3 welcome">
+      <h3><strong>Welcome to Twitter.</strong></h3>
+      </br>
+      <h5><p>Twitter is the 21st century app that connects fighters with super powers. Sign up to challenge other fighters in the universe. Throw your first ki blast today!</p></h5>
     </div>
 
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
+    <!-- Column for FORMS -->
+    <div class="col-2">
 
-    <% if devise_mapping.rememberable? -%>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end -%>
+        <div id="login-form" class="container mb-4">
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), defaults: { input_html: { class: 'form-control-sm' } }) do |f| %>
+            <div class="inputs">
+              <%= f.input :email, required: false, autofocus: true, placeholder: 'Email', label: false %>
+              <%= f.input :password, required: false, autocomplete: "off", placeholder: "Password", label: false %>
+                <%= f.input :remember_me, as: :boolean, wrapper_html: {class: 'mb-0'}, label_html: {class: 'small'} if devise_mapping.rememberable? %>
+                <%= render "devise/shared/links" %>
+            </div> <!-- End of log in form inputs -->
+            <div class="button">
+              <%= f.button :submit, "Log in", class: "btn btn-sm btn-outline-primary" %>
+            </div> <!-- End of log in form button -->
+        <% end %>
+        </div> <!-- End of column for LOG IN forms -->
 
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
-  <% end %>
+      <div id="signup-form" class="container"> <!-- Sign up form -->
+        <%= render "devise/shared/registration_form" %>
+      </div><!-- End of column for sign up form -->
 
-  <%= render "devise/shared/links" %>
-</div>
+    </div> <!-- End of column for FORMS -->
+
+  </div> <!-- End of row -->
+</div> <!-- End of container-fluid -->
 
 
-
+<!-- Comments for background image
+Linda C hey Linda. What you need to do is remove the last key frame, the one that makes it slide back to the start and set the animation iteration count to 1 in your CSS. This will get you the functionality that you require.
+-->

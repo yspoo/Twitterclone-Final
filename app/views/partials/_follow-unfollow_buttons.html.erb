@@ -8,7 +8,7 @@
                     <div class="container"><%= color_field_tag :followed_id, user.id %></div> <!-- color_field_tag(name, value = nil, options = {}) "name" is the name of the column, "value" is the input value passed in. -->
                     <%= f.submit "Follow", class: "btn btn-success" %>
                 <% end %>
-            <% else %>
+            <% else %> <!-- current_user is already following the person, so we show the unfollow button. -->
                 <%= form_for current_user.active_relationships.find_by(followed_id: user.id), html: { method: :delete } do |f| %>
                     <%= f.submit "Unfollow", class: "btn btn-danger" %>
                 <% end %>

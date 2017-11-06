@@ -3,8 +3,7 @@ class TweetsController < ApplicationController
   before_action :find_tweet, only: [:edit, :update, :show, :destroy]
   before_action :authenticate_user!
 
-  def index
-  end
+
 
   def new
     @tweet = Tweet.new

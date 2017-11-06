@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 # Using devise gem for authentication and user accounts.
-
+gem 'simple_form'
 
 
 

@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   def home
     @tweets = Tweet.all
   end
-
+=begin
   def profile
 # grab the username from the URL as :id
     if User.find_by_username(params[:username123] # this is to find a User by his/her username(which is unique because of our database validations) using User ID, which is unique by default(database behaviour).
@@ -24,7 +24,7 @@ class PagesController < ApplicationController
 # give us all the tweets, however give us them conditionally, we don't want any that don't belong to the user.
     @newtweet = Tweet.new
   end
-
+=end
   def users
     @users = User.all
   end

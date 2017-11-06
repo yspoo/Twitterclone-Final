@@ -16,7 +16,14 @@ user_session          POST   /users/sign_in(.:format)       user/sessions#create
 destroy_user_session  DELETE /users/sign_out(.:format)      user/sessions#destroy
 
 =end
-  resources :users do             # Make sure this is after devise routes so that the devise routes go through first.
+
+  authenticated :user do
+  root to: 'pages#home', as: :authenticated_root  # root page for logged in users.
+  end
+
+  root to: redirect('/users/sign_in')  # root page for users who haven't logged in.
+
+  resources :users, only: [:index, :show] do             # Make sure this is after devise routes so that the devise routes go through first.
     member do
       get :following, :followers  # Now we can get from a SINGLE <user>
                                   #     ALL the users that <User> follows from :following
@@ -28,12 +35,11 @@ followers_user GET    /users/:id/followers(.:format)    users#followers
 =end
     end
   end
-  resources :tweets
-  resources :relationships
-  root 'pages#index'
-  get '/home' => 'pages#home'
-  get '/user/:username123' => 'pages#profile', :as => :profile
-  get '/users' => 'pages#users'
+
+  resources :tweets,  only: [:index, :create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+  resources :tags,  only: [:index, :show]
+
 =begin
 Because we have specified our root path, we are able to use relative paths, e.g "/profile" will mean "localhost:3000/profile"
 
