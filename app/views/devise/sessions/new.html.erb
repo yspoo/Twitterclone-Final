@@ -1,39 +1,94 @@
-<div class="container-fluid guest-login d-flex">
-  <div class="row justify-content-center"> <!-- justify-content: It defines the alignment along the main axis. It helps distribute extra free space leftover when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size. -->
+<head>
+    <link rel="stylesheet" href="/stylesheets/landingpage.scss">
+</head>
 
-    <!-- Column for description -->
-    <div class="col-3 welcome">
-      <h3><strong>Welcome to Twitter.</strong></h3>
-      </br>
-      <h5><p>Twitter is the 21st century app that connects fighters with super powers. Sign up to challenge other fighters in the universe. Throw your first ki blast today!</p></h5>
-    </div>
+<body>
 
-    <!-- Column for FORMS -->
-    <div class="col-2">
+<div class="overlay">
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="https://otakukart.com/animeblog/wp-content/uploads/2016/02/647547.jpg" alt="First background image">
+          <div class="carousel-caption">
+        Young Goku Meets Bulma<br>
+        Tweet and photo by @PYS<br>
+        12:40 PM - 8 Sep 2014
+          </div>
+        </div> <!-- End of carousel item 1-->
+        <div class="carousel-item">
+          <img class="d-block w-100" src="https://otakukart.com/animeblog/wp-content/uploads/2016/02/610765.jpg" alt="Second background image">
+          <div class="carousel-caption">
+        Dragon highway to reincarnation!<br>
+        Tweet and photo by @PYS<br>
+        10:37 PM - 12 Nov 2014
+          </div> <!-- End of carousel caption 2-->
+        </div> <!-- End of carousel item 2 -->
+        <div class="carousel-item">
+          <img class="d-block w-100" src="https://images6.alphacoders.com/610/610766.jpg" alt="Third background image">
+          <div class="carousel-caption">
+        Kaio Planet.<br>
+        Tweet and photo by @PYS<br>
+        7:50 AM - 27 Mar 2014
+          </div>  <!-- End of caoursel-caption 3-->
+        </div> <!-- End of carousel-item 3 -->
+        <div class="carousel-item">
+          <img class="d-block w-100" src="https://i.imgur.com/HwNnW7w.png" alt="Fourth background image">
+          <div class="carousel-caption">
+        Vegeta Super Saiyan Ascension.<br>
+        Tweet and photo by @PYS<br>
+        7:50 AM - 27 Mar 2014
+          </div>  <!-- End of caoursel-caption 4-->
+        </div> <!-- End of carousel-item 4 -->
+        <div class="carousel-item">
+          <img class="d-block w-100" src="http://wallup.net/wp-content/uploads/2016/04/10/323003-Dragon_Ball-Dragon_Ball_Z-Shenron-Son_Goku.jpg" alt="Fourth background image">
+          <div class="carousel-caption">
+        Travelling with Shenron.<br>
+        Tweet and photo by @PYS<br>
+        7:50 AM - 27 Mar 2014
+          </div>  <!-- End of caoursel-caption 5-->
+        </div> <!-- End of carousel-item 5 -->
+      </div> <!-- End of caoursel-inner -->
+    </div> <!-- End of caoursel id -->
+</div> <!-- End of overlay div -->
 
-        <div id="login-form" class="container mb-4">
-          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), defaults: { input_html: { class: 'form-control-sm' } }) do |f| %>
-            <div class="inputs">
-              <%= f.input :email, required: false, autofocus: true, placeholder: 'Email', label: false %>
-              <%= f.input :password, required: false, autocomplete: "off", placeholder: "Password", label: false %>
-                <%= f.input :remember_me, as: :boolean, wrapper_html: {class: 'mb-0'}, label_html: {class: 'small'} if devise_mapping.rememberable? %>
-                <%= render "devise/shared/links" %>
-            </div> <!-- End of log in form inputs -->
-            <div class="button">
-              <%= f.button :submit, "Log in", class: "btn btn-sm btn-outline-primary" %>
-            </div> <!-- End of log in form button -->
-        <% end %>
-        </div> <!-- End of column for LOG IN forms -->
+  <div class="container-fluid guest-login d-flex">
+    <div class="row justify-content-center"> <!-- justify-content: It defines the alignment along the main axis. It helps distribute extra free space leftover when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size. -->
 
-      <div id="signup-form" class="container"> <!-- Sign up form -->
-        <%= render "devise/shared/registration_form" %>
-      </div><!-- End of column for sign up form -->
+      <!-- Column for description -->
+      <div class="col-3 welcome">
+        <h3><strong>Welcome to DragonTweet.</strong></h3>
+        </br>
+        <h5><p>DragonTweet is the 21st century app that connects fighters with super powers from DragonBall Z. Sign up to challenge other fighters in the universe. Throw your first ki blast today!</p></h5>
+      </div>
 
-    </div> <!-- End of column for FORMS -->
+      <!-- Column for FORMS -->
+      <div class="col-2">
 
-  </div> <!-- End of row -->
-</div> <!-- End of container-fluid -->
+          <div id="login-form" class="container mb-4">
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), defaults: { input_html: { class: 'form-control-sm' } }) do |f| %>
+              <div class="inputs">
+                <%= f.input :email, required: false, autofocus: true, placeholder: 'Email', label: false %>
+                <%= f.input :password, required: false, autocomplete: "off", placeholder: "Password", label: false %>
+                  <%= f.input :remember_me, as: :boolean, wrapper_html: {class: 'mb-0'}, label_html: {class: 'small'} if devise_mapping.rememberable? %>
+                  <%= render "devise/shared/links" %>
+              </div> <!-- End of log in form inputs -->
+              <div class="button">
+                <%= f.button :submit, "Log in", class: "btn btn-sm btn-outline-primary" %>
+              </div> <!-- End of log in form button -->
+            <% end %>
+          </div> <!-- End of column for LOG IN forms -->
 
+        <div id="signup-form" class="container"> <!-- Sign up form -->
+          <%= render "devise/shared/registration_form" %>
+        </div><!-- End of column for sign up form -->
+
+      </div> <!-- End of column for FORMS -->
+
+    </div> <!-- End of row -->
+
+  </div> <!-- End of container-fluid -->
+
+</body>
 <!-- Comments for background image
 Linda C hey Linda. What you need to do is remove the last key frame, the one that makes it slide back to the start and set the animation iteration count to 1 in your CSS. This will get you the functionality that you require.
 -->

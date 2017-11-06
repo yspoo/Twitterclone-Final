@@ -1,0 +1,27 @@
+.guest-login {
+  font-family: Cinecav Sans;
+  box-sizing: border-box;
+  // background-size: cover;
+  // background: url("guest_loginpage_background_1"), url("guest_loginpage_background_2"), url("guest_loginpage_background_3"), url("guest_loginpage_background_4"), url("guest_loginpage_background_5");
+  color: white;
+  padding: 56px 0px 0px 0px;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
+
+.overlay {
+  position: absolute;
+  overflow: hidden;
+  height: calc(100vh - 56px);
+  width: 100%;
+}
+
+.carousel-caption {
+  font-family: Cinecav Mono;
+  top: 50%;
+  left: 15%;
+  font-size: 12px;
+  text-align: left;
+}

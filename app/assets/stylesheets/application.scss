@@ -15,6 +15,10 @@
  */
 
 // Alerts and notices stylings
+body {
+font-family: Cinecav Sans;
+}
+
 #notice_wrapper {
   box-sizing: border-box;
   position: absolute;
@@ -59,10 +63,4 @@
     color: #ffffff;
     letter-spacing: 1px;
   }
-}
-
-// Guest-login page
-.guest-login {
-  padding: 56px;
-  height: 100vh;
 }
