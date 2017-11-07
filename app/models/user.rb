@@ -36,33 +36,45 @@ However, if we prefer to have our own naming, we can write it like:
 # Helper methods
   # The following and unfollowing actions from the perspective of the current user. "other" refers to other different users. I used passive_relationships as well to see if I understood the concept correctly. By using "passive_relationships", I can force other users to follow or unfollow the current user even if they did not click on the "follow"/"unfollow" buttons respectively.
 
+  # Feed method will produce the tweets feed in the current_user home page.
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE  follower_id = :user_id"
+    # following_ids are the IDs of the people that any individual user is following.
+    Tweet.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
+    # with those IDs, retrieve the tweets that belong to them(since each tweet corresponds to a user ID) as well as the tweets belonging to the current user.
+  end
+
   # Establishing a relationship. Can use either.
-  def follow(other)
-    active_relationships.create(followed_id: other.id)  # current user follows the user he wants to follow.
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)  # current user follows the user he wants to follow.
   end
   # active_relationships, by default, will input the current user ID as the follower ID. So when we use active_relationships.create => it only has to create the ID of the followed user as the followed ID.
 
-  def getfollowedby(other)
-    passive_relationships.create(follower_id: other.id) # current user gets followed by another user. That user would have clicked on the "follow" button for this to happen.
+  def getfollowedby(other_user)
+    passive_relationships.create(follower_id: other_user.id) # current user gets followed by another user. That user would have clicked on the "follow" button for this to happen.
   end
 
   # Destroying a relationship. Can use either.
-  def unfollow(other)
-    active_relationships.find_by(followed_id: other.id).destroy # current user unfollows the user he wants to unfollow. We do not use follower_id because doing so will destroy all the relationships that current user has with other users as well.
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy # current user unfollows the user he wants to unfollow. We do not use follower_id because doing so will destroy all the relationships that current user has with other users as well.
   end
 
-  def getunfollowedby(other)
-    passive_relationships.find_by(follower_id: other.id).destroy # current user gets unfollowed by another user. That user would have clicked on the "unfollow" button for this to happen.
+  def getunfollowedby(other_user)
+    passive_relationships.find_by(follower_id: other_user.id).destroy # current user gets unfollowed by another user. That user would have clicked on the "unfollow" button for this to happen.
   end
 
   # Finding out if a relationship exists.
-  def following?(other)
-    following.include?(other.id) # Find out if current user is already following the user he is interested in. # Returns a Boolean true or Boolean false value.
+  def following?(other_user)
+    following.include?(other_user) # Find out if current user is already following the user he is interested in. # Returns a Boolean true if current user is following the other user, otherwise returns a Boolean false value.
   end
 
-  def is_a_follower_of?(other)
-    followers.include?(other.id) # Find out if current user is already a follower of the user he is interested in.
+  def is_a_follower_of?(other_user)
+    followers.include?(other_user) # Find out if current user is already a follower of the user he is interested in.
   end
+
+
 
   scope :latest, -> {order(created_at: :desc) }
 

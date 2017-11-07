@@ -1,0 +1,8 @@
+<%= form_for(current_user.active_relationships.
+                          build(followed_id: @user.id),
+                          remote: true) do |f| %>
+<!-- Adding something to current user's active relationship. It will have another user ID appended onto the active_relationship table when current user clicks on "follow" button. -->
+  <div><%= color_field_tag :followed_id, @user.id %></div>
+<!-- color_field_tag(name, value = nil, options = {}) "name" is the name of the column, "value" is the input value passed in. -->
+  <%= f.submit "Follow", class: "btn btn-primary" %>
+<% end %>

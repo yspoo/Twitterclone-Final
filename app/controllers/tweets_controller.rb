@@ -1,9 +1,7 @@
 class TweetsController < ApplicationController
 
-  before_action :find_tweet, only: [:edit, :update, :show, :destroy]
+  before_action :find_tweet, only: [:edit, :destroy]
   before_action :authenticate_user!
-
-
 
   def new
     @tweet = Tweet.new
@@ -26,22 +24,20 @@ class TweetsController < ApplicationController
   def edit
   end
 
-  def update
-  end
-
-  def show
-  end
-
   def destroy
+    @tweet.destroy
+    flash[:notice] = "Tweet deleted!"
+    redirect_back(fallback_location: root_path)
   end
 
   private
 
-  def tweet_params  # allows certain data to be passed via form.
+  def tweet_params  # allows certain data to be passed via tweet form.
     params.require(:tweet).permit(:user_id, :content)
   end
 
   def find_tweet
+    @tweet = Tweet.find(params[:id])
   end
 
 end

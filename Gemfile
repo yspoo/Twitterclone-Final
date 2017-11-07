@@ -38,6 +38,13 @@ gem 'devise'
 gem 'simple_form'
 
 
+# Newly added gems, read the documentation to find out more.
+gem 'faker'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 
 group :development, :test do

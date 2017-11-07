@@ -1,0 +1,11 @@
+<% unless current_user?(@user) %><!-- to check if current user is the same person(denoted by "user") as who the current user wants to follow. this is to prevent current user from following himself. So, the follow button will not be displayed in current user's profile page. -->
+  <div id="follow_form" class="card">
+    <center>
+        <% if current_user.following?(@user) %> <!-- to check if current user is already following the person(denoted by "user", which is actually the next user in the list) that he wants to follow. If the return value is true, it means current_user is NOT following that particular user because of the "!" -->
+          <%= render 'unfollow' %>
+        <% else %> <!-- current_user is already following the person, so we show the unfollow button. -->
+          <%= render 'follow' %>
+        <% end %>
+    </center>
+  </div>
+  <% end %>
